@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Azizul Hakim — Rishad</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -14,6 +14,7 @@
     --muted: #7a7570;
     --accent: #c9a96e;
     --soft: #ede9e2;
+    --green: #5a7a5a;
   }
 
   html { scroll-behavior: smooth; }
@@ -27,7 +28,6 @@
     overflow-x: hidden;
   }
 
-  /* subtle grain overlay */
   body::before {
     content: '';
     position: fixed;
@@ -113,6 +113,8 @@
   .section:nth-child(6) { animation-delay: 0.5s; }
   .section:nth-child(7) { animation-delay: 0.6s; }
   .section:nth-child(8) { animation-delay: 0.7s; }
+  .section:nth-child(9) { animation-delay: 0.75s; }
+  .section:nth-child(10) { animation-delay: 0.8s; }
 
   .section-label {
     font-size: 10px;
@@ -190,6 +192,105 @@
     color: var(--ink);
   }
 
+  /* ── highlight card ── */
+  .highlight-card {
+    background: var(--soft);
+    border-radius: 14px;
+    padding: 20px;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  /* ── place card ── */
+  .place-card {
+    background: var(--soft);
+    border-radius: 14px;
+    padding: 20px 20px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .place-icon {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .place-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .place-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── goal card ── */
+  .goal-card {
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 22px 20px;
+    color: var(--cream);
+  }
+
+  .goal-card .goal-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .goal-card .goal-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--cream);
+  }
+
+  .goal-card .goal-sub {
+    font-size: 13px;
+    color: #8a8580;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  /* ── free day ── */
+  .free-day-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .free-day-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--soft);
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-size: 14px;
+    color: var(--ink);
+    transition: transform 0.2s ease;
+  }
+
+  .free-day-item:hover { transform: translateX(4px); }
+
+  .free-day-item .icon {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
   /* ── good side ── */
   .good-side {
     background: var(--soft);
@@ -262,6 +363,33 @@
 
   .link-btn:hover .arrow { transform: translateX(3px); }
 
+  /* ── status pill ── */
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--soft);
+    border-radius: 99px;
+    padding: 6px 14px 6px 10px;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #7dbf7d;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
   /* ── footer ── */
   .footer {
     text-align: center;
@@ -269,13 +397,11 @@
     color: var(--muted);
     margin-top: 60px;
     opacity: 0;
-    animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) 0.8s forwards;
+    animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) 0.9s forwards;
     letter-spacing: 0.05em;
   }
 
-  .footer span {
-    color: var(--accent);
-  }
+  .footer span { color: var(--accent); }
 
   /* ── animation ── */
   @keyframes fadeUp {
@@ -283,7 +409,6 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── responsive ── */
   @media (max-width: 360px) {
     .info-grid { grid-template-columns: 1fr; }
   }
@@ -294,10 +419,14 @@
 
   <!-- hero -->
   <div class="hero">
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      Single &amp; free
+    </div>
     <p class="eyebrow">Hey, I'm</p>
     <h1>Azizul<br><em>Hakim.</em></h1>
     <p class="nickname">but everyone calls me Rishad &mdash; Jan 8, 2007</p>
-    <p class="quote-line">"Life is too short to love you in one ."</p>
+    <p class="quote-line">"Big dih, bigger heart — and somehow still the most patient person in the room."</p>
   </div>
 
   <div class="divider"></div>
@@ -337,14 +466,62 @@
   <div class="section">
     <p class="section-label">About</p>
     <p class="about-text">
-     19, Dhaka. Still figuring things out — but doing it with intention.
-I'm the kind of person who notices the details most people scroll past. I cook, I game, I pick up a camera when something feels worth remembering. Somewhere between CS2 matches and late-night thoughts, I'm building toward something bigger — economics, entrepreneurship, a life that actually means something.
-People don't always see it at first, but give it time — I have a way of becoming the person you didn't know you needed around.
-
+      19, Dhaka. Still figuring things out — but doing it with intention.<br><br>
+      I'm the kind of person who notices the details most people scroll past. I cook, I game, I pick up a camera when something feels worth remembering. I love things that are <strong>natural</strong> — untouched, honest, real. Somewhere between late-night noodles and quiet walks through DU campus, I'm building toward something bigger.<br><br>
+      People don't always see it at first, but give it time — I have a way of becoming the person you didn't know you needed around.
     </p>
   </div>
 
-  <!-- good side -->
+  <!-- favourite place -->
+  <div class="section">
+    <p class="section-label">Favourite place</p>
+    <div class="place-card">
+      <div class="place-icon">🌿</div>
+      <div>
+        <p class="place-name">Dhaka University Area</p>
+        <p class="place-desc">There's something about the old trees, the open roads, the quiet that somehow exists inside a city of millions. It just feels like the world slows down there.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- goal -->
+  <div class="section">
+    <p class="section-label">Where I'm headed</p>
+    <div class="goal-card">
+      <p class="goal-label">The goal</p>
+      <p class="goal-text">Build a tech startup from scratch — something that actually solves a real problem.</p>
+      <p class="goal-sub">Economics, entrepreneurship, a life that actually means something. I'm not in a hurry — I'm just making sure every step counts.</p>
+    </div>
+  </div>
+
+  <!-- free day -->
+  <div class="section">
+    <p class="section-label">A free day looks like</p>
+    <div class="free-day-list">
+      <div class="free-day-item">
+        <span class="icon">🍜</span>
+        <span>Making noodles — my own recipe, my own pace</span>
+      </div>
+      <div class="free-day-item">
+        <span class="icon">📱</span>
+        <span>Scrolling social media, falling into rabbit holes</span>
+      </div>
+      <div class="free-day-item">
+        <span class="icon">📖</span>
+        <span>Reading — lately <em>Things Only You See When You Slow Down</em></span>
+      </div>
+      <div class="free-day-item">
+        <span class="icon">💭</span>
+        <span>Just thinking about everything. For a long time.</span>
+      </div>
+      <div class="free-day-item">
+        <span class="icon">🌿</span>
+        <span>Being somewhere natural — or at least wishing I was</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- what people say -->
   <div class="section">
     <p class="section-label">What people say</p>
     <div class="good-side">
@@ -356,25 +533,17 @@ People don't always see it at first, but give it time — I have a way of becomi
   <div class="section">
     <p class="section-label">Into</p>
     <div class="tags">
-      <span class="tag">Cooking</span>
-      <span class="tag">hangouts</span>
-      <span class="tag">editing</span>
-      <span class="tag">creating new stuff</span>
-      <span class="tag">sports</span>
-      <span class="tag">yapping</span>
-      <span class="tag">Walking</span>
-      <span class="tag">travelling</span>
-      <span class="tag">Hangouts</span>
-      <span class="tag">Fun videography</span>
-      <span class="tag">fun coding </span>
-    </div>
-  </div>
-
-  <!-- currently -->
-  <div class="section">
-    <p class="section-label">Reading / Watching</p>
-    <div class="tags">
-      <span class="tag">📖 Things Only You See When You Slow Down</span>
+      <span class="tag">🍜 Cooking noodles</span>
+      <span class="tag">🌿 Nature & natural things</span>
+      <span class="tag">📷 Editing</span>
+      <span class="tag">🎮 Gaming</span>
+      <span class="tag">🚶 Walking</span>
+      <span class="tag">✈️ Travelling</span>
+      <span class="tag">🎥 Fun videography</span>
+      <span class="tag">💻 Fun coding</span>
+      <span class="tag">🗣️ Yapping</span>
+      <span class="tag">☕ Hangouts</span>
+      <span class="tag">⚽ Sports</span>
     </div>
   </div>
 
